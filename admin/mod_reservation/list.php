@@ -20,25 +20,17 @@
 				</thead>
 				<tbody>
 					<?php
-					//$mydb->setQuery("SELECT *,roomName,firstname, lastname FROM reservation re,room ro,guest gu  WHERE re.roomNo = ro.roomNo AND re.guest_id=gu.guest_id");
-					// $mydb->setQuery("SELECT * 
-					// 				FROM  `tblreservation` r,  `tblguest` g,  `tblroom` rm, tblaccomodation a
-					// 				WHERE r.`ROOMID` = rm.`ROOMID` 
-					// 				And a.`ACCOMID` = rm.`ACCOMID` 
-					// 				AND g.`GUESTID` = r.`GUESTID`  
-					// 				ORDER BY r.`STATUS`='pending'");
 					$mydb->setQuery("SELECT  `firstname` ,  `lastname` ,  `address` ,  `trans_date` ,  `confirmation_code` ,  `p_qty` ,  `price` ,`status`
 				FROM  `payment` p,  `guest` g
 				WHERE p.`guest_id` = g.`guest_id`   
 				ORDER BY p.`status`='pending' desc ");
 					$cur = $mydb->loadResultList();
-					// `RESERVEID`, `TRANSNUM`, `TRANSDATE`, `ROOMID`, `ARRIVAL`, `DEPARTURE`, `RPRICE`, `GUESTID`, `PRORPOSE`, `STATUS`, `BOOKDATE`, `REMARKS`, `USERID`SELECT * FROM `tblreservation` WHERE 1
 					foreach ($cur as $result) {
 					?>
 						<tr>
 							<td width="5%" align="center"></td>
 							<td><?php echo $result->firstname . " " . $result->lastname; ?></td>
-							<td><?php echo $result->trans_date; ?></td>
+							<td><?php echo date('F j, Y, g:i a', strtotime($result->trans_date)); ?></td>
 							<!-- <td><?php echo date_format(date_create($result->arrival), 'm/d/Y'); ?></td>
 							<td><?php echo date_format(date_create($result->departure), 'm/d/Y'); ?></td> -->
 							<!--<td><?php echo $result->room; ?></td>-->
@@ -50,32 +42,22 @@
 							<td><?php echo $result->status; ?></td>
 							<!--<td><a class="btn btn-default toggle-modal-reserve" href="#reservationr<?php echo $result->reservation_id; ?>" role="button" >View</a></td>-->
 							<td>
-								<?php
-								if ($result->status == 'Confirmed') { ?>
-									<!-- <a class="cls_btn" id="<?php echo $result->reservation_id; ?>" data-toggle='modal' href="#profile" title="Click here to Change Image." ><i class="icon-edit">test</a> -->
-									<a href="index.php?view=view&code=<?php echo $result->confirmation_code; ?>" class="btn btn-primary btn-xs"><i class="icon-edit">View</a>
-									<a href="controller.php?action=cancel&code=<?php echo $result->confirmation_code; ?>" class="btn btn-primary btn-xs"><i class="icon-edit">Cancel</a>
-									<a href="controller.php?action=checkin&code=<?php echo $result->confirmation_code; ?>" class="btn btn-success btn-xs"><i class="icon-edit">Check in</a>
-								<?php
-								} elseif ($result->status == 'Checkedin') {
-								?>
-									<a href="index.php?view=view&code=<?php echo $result->confirmation_code; ?>" class="btn btn-primary btn-xs"><i class="icon-edit">View</a>
-									<a href="controller.php?action=checkout&code=<?php echo $result->confirmation_code; ?>" class="btn btn-danger btn-xs"><i class="icon-edit">Check out</a>
-								<?php
-								} elseif ($result->status == 'Checkedout') { ?>
-									<a href="index.php?view=view&code=<?php echo $result->confirmation_code; ?>" class="btn btn-primary btn-xs"><i class="icon-edit">View</a>
-
-								<?php } else {
-								?>
-									<a href="index.php?view=view&code=<?php echo $result->confirmation_code; ?>" class="btn btn-primary btn-xs"><i class="icon-edit">View</a>
-									<a href="controller.php?action=cancel&code=<?php echo $result->confirmation_code; ?>" class="btn btn-primary btn-xs"><i class="icon-edit">Cancel</a>
-									<a href="controller.php?action=confirm&code=<?php echo $result->confirmation_code; ?>" class="btn btn-success btn-xs"><i class="icon-edit">Confirm</a>
-								<?php
-								}
-
-								?>
-
-
+								<?php if ($result->status == 'Confirmed') { ?>
+									<a href="index.php?view=view&code=<?php echo $result->confirmation_code; ?>" class="btn btn-primary btn-xs"><i class="icon-edit"></i>View</a>
+									<a href="controller.php?action=cancel&code=<?php echo $result->confirmation_code; ?>" class="btn btn-primary btn-xs"><i class="icon-edit"></i>Cancel</a>
+									<a href="controller.php?action=checkin&code=<?php echo $result->confirmation_code; ?>" class="btn btn-success btn-xs"><i class="icon-edit"></i>Check in</a>
+								<?php } elseif ($result->status == 'Checkedin') { ?>
+									<a href="index.php?view=view&code=<?php echo $result->confirmation_code; ?>" class="btn btn-primary btn-xs"><i class="icon-edit"></i>View</a>
+									<a href="controller.php?action=checkout&code=<?php echo $result->confirmation_code; ?>" class="btn btn-danger btn-xs"><i class="icon-edit"></i>Check out</a>
+								<?php } elseif ($result->status == 'Checkedout') { ?>
+									<a href="index.php?view=view&code=<?php echo $result->confirmation_code; ?>" class="btn btn-primary btn-xs"><i class="icon-edit"></i>View</a>
+								<?php } elseif ($result->status == 'Cancelled') { ?>
+									<p  class="badge">Cancelled</p>
+								<?php } else { ?>
+									<a href="index.php?view=view&code=<?php echo $result->confirmation_code; ?>" class="btn btn-primary btn-xs"><i class="icon-edit"></i>View</a>
+									<a href="controller.php?action=cancel&code=<?php echo $result->confirmation_code; ?>" class="btn btn-primary btn-xs"><i class="icon-edit"></i>Cancel</a>
+									<a href="controller.php?action=confirm&code=<?php echo $result->confirmation_code; ?>" class="btn btn-success btn-xs"><i class="icon-edit"></i>Confirm</a>
+								<?php } ?>
 							</td>
 
 						<?php }

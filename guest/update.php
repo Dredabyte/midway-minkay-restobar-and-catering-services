@@ -11,8 +11,6 @@
 		$guest->birthdate           = date_format(date_create($_POST['dbirth']), 'Y-m-d');
 		$guest->phone          = $_POST['phone'];
 		$guest->nationality    = $_POST['nationality'];
-		$guest->company        = $_POST['company'];
-		$guest->company_address       = $_POST['caddress'];
 		// $guest->G_UNAME          = $_POST['username'];    
 		// $guest->G_PASS           = sha1($_POST['pass']);    
 		$guest->zip_code              = $_POST['zip'];

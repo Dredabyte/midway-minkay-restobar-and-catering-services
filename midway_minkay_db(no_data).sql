@@ -8,6 +8,8 @@
 -- PHP Version: 5.3.5
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = '+08:00';
+
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -30,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `accomodation` (
   `accomodation_name` varchar(30) NOT NULL,
   `accomodation_description` varchar(90) NOT NULL,
   PRIMARY KEY (`accomodation_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `tblaccomodation`
@@ -53,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `amenities` (
   `amenities_description` varchar(125) NOT NULL,
   `amenities_image` varchar(255) NOT NULL,
   PRIMARY KEY (`amenities_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `amenities`
@@ -82,9 +84,9 @@ CREATE TABLE IF NOT EXISTS `guest` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `zip_code` int(11) NOT NULL,
-  `location` varchar(125) NOT NULL,
+  `photo` varchar(125) NOT NULL,
   PRIMARY KEY (`guest_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=77 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=77 ;
 
 --
 -- Dumping data for table `tblguest`
@@ -102,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `guest` (
 
 CREATE TABLE IF NOT EXISTS `payment` (
   `payment_id` int(11) NOT NULL AUTO_INCREMENT,
-  `trans_date` datetime NOT NULL,
+  `trans_date` datetime NOT NULL DEFAULT current_timestamp(),
   `confirmation_code` varchar(30) NOT NULL,
   `reference_number` varchar(50) NOT NULL,
   `p_qty` int(11) NOT NULL,
@@ -113,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `payment` (
   PRIMARY KEY (`payment_id`),
   UNIQUE KEY `confirmation_code` (`confirmation_code`),
   KEY `guest_id` (`guest_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `tblpayment`
@@ -136,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `payment` (
 CREATE TABLE IF NOT EXISTS `reservation` (
   `reservation_id` int(11) NOT NULL AUTO_INCREMENT,
   `confirmation_code` varchar(50) NOT NULL,
-  `trans_date` date NOT NULL,
+  `trans_date` datetime NOT NULL DEFAULT current_timestamp(),
   `room_id` int(11) NOT NULL,
   `arrival` datetime NOT NULL,
   `departure` datetime NOT NULL,
@@ -151,7 +153,7 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   KEY `room_id` (`room_id`),
   KEY `guest_id` (`guest_id`),
   KEY `confirmation_code` (`confirmation_code`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `tblreservation`
@@ -186,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `room` (
   `room_image` varchar(255) NOT NULL,
   PRIMARY KEY (`room_id`),
   KEY `accomodation_id` (`accomodation_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=28 ;
 
 --
 -- Dumping data for table `tblroom`
@@ -225,7 +227,7 @@ CREATE TABLE IF NOT EXISTS `useraccount` (
   `role` varchar(30) NOT NULL,
   `phone` varchar(20) NOT NULL,
   PRIMARY KEY (`useraccount_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `tbluseraccount`

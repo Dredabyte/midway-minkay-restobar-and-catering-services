@@ -7,4 +7,4 @@
 - terms and condition
 - 10% down payment cant refund nonetheless the date of reservation be move
 - more detailed sa room
-- JavaScript for graph (sales, ) 
+- JavaScript for graph (sales, )

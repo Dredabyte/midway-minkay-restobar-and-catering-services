@@ -1,14 +1,7 @@
  <?php
   require_once("../includes/initialize.php");
 
-
-
-  //$sql = "UPDATE `payment` SET `msg_view`=1 WHERE `confirmation_code` ='" . $_GET['code'] . "'";
-  //mysql_query($sql) or die(mysql_error());
-
-
-
-  $query = "SELECT g.`guest_id`, `firstname`, `lastname`, `address`,`confirmation_code`, `trans_date`, `arrival`, `departure`, `r_price`
+  $query = "SELECT g.`guest_id`, `firstname`, `lastname`, `address`,`confirmation_code`, `trans_date`, `arrival`, `departure`, `r_price`, `status`
                FROM `guest` g ,`reservation` r 
                WHERE g.`guest_id`=r.`guest_id` and `confirmation_code` ='" . $_GET['code'] . "'";
   $mydb->setQuery($query);
@@ -58,9 +51,13 @@
          <p style="background-color:blue;color:white"> <?php echo $res->confirmation_code; ?></p>
          <input type="hidden" name="code" value="<?php echo $res->confirmation_code; ?>">
          <br>
-         <b>Transaction Date:</b> <?php echo  Date($res->trans_date); ?>
+         <b>Transaction Date:</b> <?php echo date('F j, Y, g:i', strtotime($res->trans_date)); ?>
          <br>
          <b>Account:</b> <?php echo $res->guest_id; ?>
+         <br>
+         <b>Status: </b>
+         <p style="background-color:red;color:white"> <?php echo $res->status; ?></p>
+         <input type="hidden" name="code" value="<?php echo $res->status; ?>">
 
        </div>
        <!-- /.col -->

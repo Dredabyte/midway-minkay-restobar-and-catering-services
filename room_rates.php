@@ -116,7 +116,7 @@
 
                 $curs = $mydb->loadResultList();
 
-                $resNum = $result->room_id - count($curs);
+                $resNum = $result->room_num - count($curs);
 
 
 

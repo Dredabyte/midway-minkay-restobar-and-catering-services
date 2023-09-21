@@ -15,17 +15,16 @@ $res = $mydb->loadSingleResult();
 
 if ($res->status == 'Confirmed') {
   $stats = '<li class="next"><a href="' . WEB_ROOT . 'admin/mod_reservation/controller.php?action=checkin&code=' . $res->confirmation_code .
-    '">Confirmed &rarr;</a></li>';
+    '">Checkin &rarr;</a></li>';
 } elseif ($res->status == 'Checkedin') {
   $stats = '<li class="next"><a href="' . WEB_ROOT . 'admin/mod_reservation/controller.php?action=checkout&code=' . $res->confirmation_code .
-    '">Checkin &rarr;</a></li>';
+    '">Checkout &rarr;</a></li>';
 } elseif ($res->status == 'Checkedout') {
-  $stats = "";
+  $stats = " ";
 } else {
   $stats = '<li class="next"><a href="' . WEB_ROOT . 'admin/mod_reservation/controller.php?action=confirm&code=' . $res->confirmation_code .
     '">Confirm &rarr;</a></li>';
 }
-
 
 
 ?>
@@ -61,14 +60,7 @@ if ($res->status == 'Confirmed') {
         <h1 class="page-header">Reservation
           <small>View Rooms</small>
         </h1>
-        <!--  <ol class="breadcrumb">
-                    <li><a href="index.html">Home</a>
-                    </li>
-                    <li class="active">Blog Home Two</li>
-                </ol> -->
       </div>
-
-
     </div>
     <!-- /.row -->
     <?php
@@ -90,11 +82,6 @@ if ($res->status == 'Confirmed') {
 
       <!-- Blog Post Row -->
       <div class="row">
-        <!-- <div class="col-md-1 text-center">
-                <p><i class="fa fa-camera fa-4x"></i>
-                </p>
-                <p>June 17, 2014</p>
-            </div> -->
         <div class="col-md-3">
           <img class="img-responsive img-hover" src="<?php echo $image; ?>" alt="">
         </div>
@@ -113,7 +100,6 @@ if ($res->status == 'Confirmed') {
             <p><strong>DEPARTURE: </strong><?php echo date_format(date_create($cur->departure), 'm/d/Y'); ?></p>
             <p><strong>Night(s): </strong><?php echo ($day == 0) ? '1' : $day; ?></p>
             <p><strong>PRICE: </strong><?php echo $cur->r_price; ?></p>
-            <a class="btn btn-danger" href="<?php echo WEB_ROOT . 'admin/mod_reservation/controller.php?id=' . $cur->reservation_id . '&action=cancelroom'; ?>">Cancel<i class="fa fa-angle-right"></i></a>
           </div>
         </div>
       </div>
@@ -134,5 +120,3 @@ if ($res->status == 'Confirmed') {
     </ul>
   </div>
   <!-- /.row -->
-
-  <hr>

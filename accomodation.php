@@ -216,11 +216,11 @@ $_SESSION['departure'] =date_format(date_create($_POST['departure']),"Y-m-d");
                     <div  class="wrapper clearfix">
                     <a href="#" >
                         <figure class="gallery-item ">
-                            <?php if(is_file(WEB_ROOT .'admin/mod_room/'.$result->room_image)): ?>
-                            <img class="img-responsive img-hover"  src="<?php echo WEB_ROOT .'admin/mod_room/'.$result->room_image; ?>">
-                            <?php else: ?>
-                            <img class="img-responsive img-hover"  src="<?php echo WEB_ROOT .'no-img.png'; ?>">
-                            <?php endif; ?>
+                        <?php if (is_file('admin/mod_room/' . $result->room_image)) : ?>
+                            <img class="img-responsive img-hover" src="<?php echo WEB_ROOT . 'admin/mod_room/' . $result->room_image; ?>">
+                          <?php else : ?>
+                            <img class="img-responsive img-hover" src="<?php echo WEB_ROOT . 'no-img.png'; ?>">
+                          <?php endif; ?>
                     
                              <!-- <?php echo $img_title; ?> -->
                             <figcaption class="img-title-active">

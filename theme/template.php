@@ -132,13 +132,11 @@ if (isset($_SESSION['activity'])) {
   }
 
   #availability-wrap .block  > p {
-  /*font-family: MS Serif;*/
   color:  #fff; 
   font-size: 2.5em;  
   line-height: 1em; 
   margin-bottom: 0px;
   margin-top: -30px;
-  /*padding: 2px;*/
 }
 .modal-content{
   border-radius: 0;
@@ -224,7 +222,7 @@ if (isset($_SESSION['activity'])) {
     require_once $content;
     ?>
 
-    <!-- fotter  
+    <!-- footer  
  =========================================== 
  -->
     <div id="footer-wrap" class="site-footer clr">

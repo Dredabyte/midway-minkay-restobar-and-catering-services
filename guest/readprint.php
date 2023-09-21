@@ -22,7 +22,7 @@ require_once("../includes/initialize.php");
   <link rel="stylesheet" type="text/css" href="<?php echo WEB_ROOT; ?>css/custom-navbar.min.css">
 
   <!-- DataTables CSS -->
-  <!-- <link href="<?php echo WEB_ROOT; ?>css/dataTables.bootstrap.css" rel="stylesheet"> -->
+  <link href="<?php echo WEB_ROOT; ?>css/dataTables.bootstrap.css" rel="stylesheet">
 
   <link href="<?php echo WEB_ROOT; ?>css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
   <link href="<?php echo WEB_ROOT; ?>css/datepicker.css" rel="stylesheet" media="screen">
@@ -36,8 +36,8 @@ require_once("../includes/initialize.php");
 
     <?php
 
-    require_once("../includes/initialize.php");
-    $query = "SELECT g.`guest_id`, `firstname`, `lastname`, `address`,`confirmation_code`, `trans_date`, `arrival`, `departure`, `r_price` FROM `guest` g ,`reservation` r WHERE g.`guest_id`=r.`guest_id` and `confirmation_code` ='" . $_POST['code'] . "'";
+    require_once("./includes/initialize.php");
+    $query = "SELECT g.`guest_id`, `firstname`, `lastname`, `address`,`confirmation_code`, `trans_date`, `arrival`, `departure`, `r_price`, `status` FROM `guest` g ,`reservation` r WHERE g.`guest_id`=r.`guest_id` and `confirmation_code` ='" . $_POST['code'] . "'";
     $mydb->setQuery($query);
     $res = $mydb->loadsingleResult();
 
@@ -90,6 +90,10 @@ require_once("../includes/initialize.php");
             <b>Transaction Date:</b> <?php echo  Date($res->trans_date); ?>
             <br>
             <b>Account:</b> <?php echo $res->guest_id; ?>
+            <br>
+            <b>Status: </b>
+            <p style="background-color:red;color:white"> <?php echo $res->status; ?></p>
+            <input type="hidden" name="code" value="<?php echo $res->status; ?>">
 
           </div>
           <!-- /.col -->
@@ -145,19 +149,6 @@ require_once("../includes/initialize.php");
         <!-- /.row -->
 
         <div class="row">
-          <!-- accepted payments column -->
-          <div class="col-xs-6">
-            <!--  <p class="lead">Payment Methods:</p>
-          <img src="../../dist/img/credit/visa.png" alt="Visa">
-          <img src="../../dist/img/credit/mastercard.png" alt="Mastercard">
-          <img src="../../dist/img/credit/american-express.png" alt="American Express">
-          <img src="../../dist/img/credit/paypal2.png" alt="Paypal">
-
-          <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-            Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg
-            dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
-          </p> -->
-          </div>
           <!-- /.col -->
           <div class="col-xs-6">
             <p class="lead">Total Amount</p>
@@ -168,18 +159,6 @@ require_once("../includes/initialize.php");
                   <th style="width:50%">Total:</th>
                   <td> &#8369 <?php echo @$tot; ?></td>
                 </tr>
-                <!--      <tr>
-                <th>Tax (9.3%)</th>
-                <td>$10.34</td>
-              </tr>
-              <tr>
-                <th>Shipping:</th>
-                <td>$5.80</td>
-              </tr>
-              <tr>
-                <th>Total:</th>
-                <td>$265.24</td>
-              </tr> -->
               </table>
             </div>
           </div>
@@ -190,13 +169,6 @@ require_once("../includes/initialize.php");
         <!-- this row will not appear when printing -->
         <div class="row no-print">
           <div class="col-xs-12">
-            <!-- <a href="<?php echo WEB_ROOT; ?>guest/readprint.php?>" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a> -->
-            <!-- <button type="submit"  ><i class="fa fa-print"></i> Print</button> -->
-            <!--         <button type="button" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment
-          </button>
-          <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
-            <i class="fa fa-download"></i> Generate PDF
-          </button> -->
           </div>
         </div>
       </section>

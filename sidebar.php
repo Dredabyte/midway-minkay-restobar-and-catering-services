@@ -96,7 +96,7 @@
 
        <?php foreach ($cur as $result) { ?>
          <li><a href="<?php echo WEB_ROOT; ?>index.php?p=rooms&q=<?php echo $result->room; ?>">
-             <p><?php echo $result->room; ?></p>
+         <p><?php echo $result->room; ?></p>
            </a></li>
        <?php  } ?>
 

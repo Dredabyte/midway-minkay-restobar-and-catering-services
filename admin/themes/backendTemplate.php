@@ -7,17 +7,23 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="refresh" content="10"></meta>
+	<meta http-equiv="refresh" content="120">
+	</meta>
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<title><?php echo isset($title) ? $title . ' | Midway Minkay Restobar and Catering Services' :  'Midway Minkay Restobar and Catering Services'; ?></title>
 
 
 	<link href="<?php echo WEB_ROOT; ?>admin/css/bootstrap.min.css" rel="stylesheet">
+	<link href="<?php echo WEB_ROOT; ?>admin/css/bootstrap-theme.css" rel="stylesheet">
 	<link href="<?php echo WEB_ROOT; ?>admin/css/dataTables.bootstrap.css" rel="stylesheet" media="screen">
 	<link rel="icon" href="<?php echo WEB_ROOT; ?>../admin/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="<?php echo WEB_ROOT; ?>admin/css/jquery.dataTables.css">
 	<link href="<?php echo WEB_ROOT; ?>admin/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,800;0,900;1,100;1,300&display=swap" rel="stylesheet">
+
 	<script type="text/javascript" language="javascript" src="<?php echo WEB_ROOT; ?>admin/js/jquery.js"></script>
 	<script type="text/javascript" language="javascript" src="<?php echo WEB_ROOT; ?>admin/js/jquery.dataTables.js"></script>
 	<script type="text/javascript" language="javascript" src="<?php echo WEB_ROOT; ?>admin/js/bootstrap.min.js"></script>
@@ -151,6 +157,26 @@
 
 admin_logged_in();
 ?>
+<style type="text/css">
+  body {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  p,
+  a,
+  span {
+    font-family: 'Poppins', sans-serif;
+  }
+</style>
 
 <body>
 	<!--Header-->
@@ -163,7 +189,7 @@ admin_logged_in();
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<!-- <a class="navbar-brand" href="<?php echo WEB_ROOT; ?>index.php">Magbanua's Beach Resort</a> -->
+				<a class="navbar-brand" href="<?php echo WEB_ROOT; ?>index.php">Midway Minkay Restobar and Catering Services</a>
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">

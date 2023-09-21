@@ -13,10 +13,10 @@
         <ul class="nav navbar-nav  tooltip-demo">
           <li>
             <a data-toggle="tooltip" data-placement="bottom" title="Booking Cart" href="<?php echo WEB_ROOT . 'booking/index.php';  ?>">
-            <i class="fa fa-shopping-cart" style="font-size:35px;"><?php echo  isset($cart) ? $cart : ''; ?> </i>
+              <i class="fa fa-shopping-cart" style="font-size:35px;"><?php echo  isset($cart) ? $cart : ''; ?> </i>
             </a>
           </li>
-        <!--  <li>
+          <!--  <li>
             <a data-toggle="tooltip" data-placement="bottom" title="Log In" href="<?php echo WEB_ROOT; ?>booking/index.php?view=logininfo">
             <i class="fa fa-user" style="font-size:35px;"></i>
             </a>
@@ -46,7 +46,7 @@
                 <?php
                 $sql = "SELECT  *  FROM `payment` WHERE status<>'Pending' AND `msg_view`=0 AND `guest_id`=" . $_SESSION['guest_id'];
                 $mydb->setQuery($sql);
-                $res = $mydb->executeQuery($sql);
+                $res = $mydb->executeQuery();
                 while ($row = $mydb->fetch_array($res)) {
                 ?>
                   <li>
@@ -55,11 +55,11 @@
                       <li><!-- start message -->
                         <a class="read" href="<?php echo WEB_ROOT;  ?>guest/readmessage.php?code=<?php echo  $row['confirmation_code']; ?>" data-toggle="lightbox" data-id="<?php echo  $row['confirmation_code']; ?> ">
                           <div class="pull-left">
-                            <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                            <img src="<?php echo WEB_ROOT;  ?>images/images/2page-img8.jpg" class="img-circle" alt="Admin">
                           </div>
                           <h4>
                             Admin
-                            <!-- <small><i class="fa fa-clock-o"></i> 5 mins</small> -->
+                            <!--<small><i class="fa fa-clock-o"><span id="received-time"></i></small>-->
                           </h4>
                           <p>Reservation is already <?php echo   $row['status']; ?>.. </p>
                         </a>
@@ -93,7 +93,7 @@
                 <!-- Add the bg color to the header using any of the bg-* classes -->
                 <li class="widget-user-header bg-yellow">
                   <div class="widget-user-image">
-                    <img class="img-circle" style="cursor:pointer;width:200px;height:100px;padding:0;" data-target="#myModal" data-toggle="modal" src="<?php echo WEB_ROOT . $result->location;  ?>" alt="User Avatar">
+                    <img class="img-circle" style="cursor:pointer;width:150px;height:150px;padding:10px;" data-target="#myModal" data-toggle="modal" src="<?php echo WEB_ROOT . $result->location;  ?>" alt="User Avatar">
                   </div>
                   <!-- /.widget-user-image -->
                   <h3 class="widget-user-username"><?php echo $_SESSION['name'] . ' ' . $_SESSION['last']; ?> </h3>
