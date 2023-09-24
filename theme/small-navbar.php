@@ -93,7 +93,7 @@
                 <!-- Add the bg color to the header using any of the bg-* classes -->
                 <li class="widget-user-header bg-yellow">
                   <div class="widget-user-image">
-                    <img class="img-circle" style="cursor:pointer;width:150px;height:150px;padding:10px;" data-target="#myModal" data-toggle="modal" src="<?php echo WEB_ROOT . $result->location;  ?>" alt="User Avatar">
+                    <img class="img-circle" style="cursor:pointer;width:150px;height:150px;padding:10px;" data-target="#myModal" data-toggle="modal" src="<?php echo WEB_ROOT . $result->photo;  ?>" alt="User Avatar">
                   </div>
                   <!-- /.widget-user-image -->
                   <h3 class="widget-user-username"><?php echo $_SESSION['name'] . ' ' . $_SESSION['last']; ?> </h3>

@@ -110,29 +110,6 @@ $res = $guest->single_guest($_SESSION['guest_id']);
                   </div>
                 </div>
               </div>
-              <!--  <div class="form-group">
-                      <div class="col-md-10">
-                        <label class="col-md-4 control-label" for=
-                        "username">USERNAME:</label>
-
-                        <div class="col-md-8">
-                          <input name="username" type="text" value="</?php echo $res->G_UNAME; ?>" class="form-control input-sm" id="username" />
-                        </div>
-                      </div>
-                     </div>
-            
-                    <div class="form-group">
-                      <div class="col-md-10">
-                        <label class="col-md-4 control-label" for=
-                        "password">PASSWORD:</label>
-
-                        <div class="col-md-8">
-                          <input name="pass" type="password" class="form-control input-sm" id="password" />
-                        </div>
-                      </div>
-                    </div> -->
-
-
               <div class="form-group">
                 <div class="col-md-10">
                   <label class="col-md-4 control-label" for="zip">ZIP CODE:</label>
@@ -237,17 +214,7 @@ $res = $guest->single_guest($_SESSION['guest_id']);
     var i = document.forms["personal"]["password"].value;
 
 
-    // var atpos=f.indexOf("@");
-    // var dotpos=f.lastIndexOf(".");
-    // if (atpos<1 || dotpos<atpos+2 || dotpos+2>=f.length)
-    //   {
-    //   alert("Not a valid e-mail address");
-    //   return false;
-    //   }
-    // if( f != g ) {
-    // alert("email does not match");
-    //   return false;
-    // }
+
     if (document.personal.condition.checked == false) {
       alert('pls. agree the term and condition of this hotel');
       return false;
@@ -256,14 +223,6 @@ $res = $guest->single_guest($_SESSION['guest_id']);
       alert("all field are required!");
       return false;
     }
-
-
-
-
-    // else
-    // {
-    // return true;
-    // }
 
   }
 </script>

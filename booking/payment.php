@@ -101,7 +101,6 @@ if (isset($_POST['btnsubmitbooking'])) {
 
 
   unset($_SESSION['monbela_cart']);
-  // unset($_SESSION['confirmation']);
   unset($_SESSION['pay']);
   unset($_SESSION['from']);
   unset($_SESSION['to']);
@@ -118,14 +117,6 @@ if (isset($_POST['btnsubmitbooking'])) {
   redirect(WEB_ROOT . "index.php");
 }
 ?>
-
-<!--  <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="LA2U4NA99P5BC">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/payment.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
- -->
 
 <div id="accom-title">
   <div class="pagetitle">
@@ -232,30 +223,18 @@ if (isset($_POST['btnsubmitbooking'])) {
         </table>
       </div>
     </div>
-
-
-
-
-    <!-- <div class="row">
-  <div class="col-md-6 col-sm-3">
-      <label>Addons:</label>
-        <div class="col-md-12">
-           <label>Bed:</label>
+    <div class="col-md-8 col-sm-4">
+        <div align="center" class="col-md-12">
+          <p><b>NOTE: </b> Please make a <u>10% downpayment</u> of your <strong>total billing</strong> amount, including your <b>Transaction ID</b>, and send it to the provided Gcash number.</p>
         </div>
-        <div class="col-md-12">
-           <label>Person:</label>
+        <div align="center" class="col-md-12">
+            <a href="<?php echo WEB_ROOT;  ?>images/payment_logo.png"><img class="img-rounded" src="<?php echo WEB_ROOT;  ?>images/payment_logo.png" style="height: 100px;"></a>
         </div>
+        <br>
         <div class="col-md-12">
-          
+            <pre>After you've sent the downpayment, please allow a few minutes for your <br>booking to be confirmed.</pre>
         </div>
-        <div class="col-md-12">
-          
-        </div>
-  </div>
-<div class="col-md-6 col-sm-3"></div> 
-</div>
-<hr/> -->
-
+      </div>
     <div class="row">
       <h3 align="right">Total: &#8369 <?php echo   $_SESSION['pay']; ?></h3>
     </div>

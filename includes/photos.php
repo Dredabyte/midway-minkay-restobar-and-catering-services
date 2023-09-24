@@ -1,10 +1,4 @@
 <?php
-/**
-* Description:	This is a class for Photos.
-* Author:		Joken Villanueva
-* Date Created:	october 26, 2013
-* Revised By:		
-*/
 require_once(LIB_PATH.DS.'database.php');
 class photos {
 	

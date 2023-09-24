@@ -1,7 +1,7 @@
 <?php include "availability_search.php"; ?>
 <!-- Projects Row -->
 <div class="row">
-    <div class="col-md-9 img-portfolio">
+    <div class="col-md-8 img-portfolio">
         <div class="page-header">
             <h1>Welcome to Midway Minkay Restobar and Catering Services</h1>
         </div>
@@ -20,6 +20,20 @@
             <p><i class="fa fa-envelope-o fa-fw pull-left"></i>midway1115@yahoo.com</p>
             <div class="space"></div>
             <p><i class="fa fa-phone fa-fw pull-left"></i>0975-081-5326 | 0927-285-5608</p>
+        </div>
+        <div class="col-md-6">
+            <br>
+            <hr>
+            <h4>Located conveniently along the National Highway of 
+                Barangay Tubigan, Initao, Misamis Oriental and a few minutes away from Initao National Park.
+            </h4>
+            <p>
+                Midway White Beach Resort is known for its scenic ambiance, white sand beaches, fun water rides and
+                its Filipino hospitality.
+                The resort caters national conventions, official government functions, private weddings, 
+                family gatherings and all other occassions are held here.
+            </p>
+            <hr>
         </div>
     </div>
 

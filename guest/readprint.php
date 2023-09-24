@@ -22,7 +22,7 @@ require_once("../includes/initialize.php");
   <link rel="stylesheet" type="text/css" href="<?php echo WEB_ROOT; ?>css/custom-navbar.min.css">
 
   <!-- DataTables CSS -->
-  <link href="<?php echo WEB_ROOT; ?>css/dataTables.bootstrap.css" rel="stylesheet">
+  <!-- <link href="<?php echo WEB_ROOT; ?>css/dataTables.bootstrap.css" rel="stylesheet"> -->
 
   <link href="<?php echo WEB_ROOT; ?>css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
   <link href="<?php echo WEB_ROOT; ?>css/datepicker.css" rel="stylesheet" media="screen">
@@ -36,8 +36,8 @@ require_once("../includes/initialize.php");
 
     <?php
 
-    require_once("./includes/initialize.php");
-    $query = "SELECT g.`guest_id`, `firstname`, `lastname`, `address`,`confirmation_code`, `trans_date`, `arrival`, `departure`, `r_price`, `status` FROM `guest` g ,`reservation` r WHERE g.`guest_id`=r.`guest_id` and `confirmation_code` ='" . $_POST['code'] . "'";
+    require_once("../includes/initialize.php");
+    $query = "SELECT g.`guest_id`, `firstname`, `lastname`, `address`,`confirmation_code`, `status`, `trans_date`, `arrival`, `departure`, `r_price` FROM `guest` g ,`reservation` r WHERE g.`guest_id`=r.`guest_id` and `confirmation_code` ='" . $_POST['code'] . "'";
     $mydb->setQuery($query);
     $res = $mydb->loadsingleResult();
 
@@ -61,8 +61,8 @@ require_once("../includes/initialize.php");
           <div class="col-sm-4 invoice-col">
             From
             <address>
-              <strong>Midway Minkay </strong><br>
-              P3A, Tubigan, Initao<br>
+              <strong>Midway Minkay Restobar and Catering Services </strong><br>
+              P3A, Tubigan, Initao,<br>
               Misamis Oriental, 9022<br>
               Phone: 0975-081-5326 | 0927-285-5608<br>
               Email: midway1115@yahoo.com
@@ -81,20 +81,18 @@ require_once("../includes/initialize.php");
           <div class="col-sm-4 invoice-col">
             <br />
             <br />
-            <!-- <b>Invoice #007612</b><br>
-          <br> -->
             <b>Confirmation ID:</b>
             <p style="background-color:blue;color:white"> <?php echo $res->confirmation_code; ?></p>
             <input type="hidden" name="code" value="<?php echo $res->confirmation_code; ?>">
             <br>
-            <b>Transaction Date:</b> <?php echo  Date($res->trans_date); ?>
+            <b>Transaction Date:</b> <?php echo date('F j, Y', strtotime($res->trans_date)); ?>
             <br>
-            <b>Account:</b> <?php echo $res->guest_id; ?>
             <br>
-            <b>Status: </b>
+            <b>Account #:</b> <?php echo $res->guest_id; ?>
+            <br>
+            <br>
+            <b>STATUS: </b>
             <p style="background-color:red;color:white"> <?php echo $res->status; ?></p>
-            <input type="hidden" name="code" value="<?php echo $res->status; ?>">
-
           </div>
           <!-- /.col -->
         </div>
@@ -149,6 +147,9 @@ require_once("../includes/initialize.php");
         <!-- /.row -->
 
         <div class="row">
+          <!-- accepted payments column -->
+          <div class="col-xs-6">
+          </div>
           <!-- /.col -->
           <div class="col-xs-6">
             <p class="lead">Total Amount</p>

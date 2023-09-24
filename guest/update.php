@@ -39,17 +39,15 @@
 			} else {
 
 
-				$location = "guest/photos/" . $_FILES["image"]["name"];
+				$photo = "guest/photos/" . $_FILES["image"]["name"];
 
 				move_uploaded_file($_FILES["image"]["tmp_name"], "photos/" . $_FILES["image"]["name"]);
 
 				$g = new Guest();
 
-				$g->location = $location;
+				$g->photo = $photo;
 				$g->update($_SESSION['guest_id']);
 
-				// message("Room Image Upadated successfully!", "success");
-				// unset($_SESSION['id']);
 				redirect(WEB_ROOT . "index.php");
 			}
 		}

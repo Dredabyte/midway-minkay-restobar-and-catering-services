@@ -1,4 +1,7 @@
 <div class="container">
+	<?php
+	check_message();
+	?>
 	<!-- <div class="panel panel-primary"> -->
 	<div class="panel-body">
 		<form method="post" action="processreservation.php?action=delete">
@@ -44,7 +47,6 @@
 							<td>
 								<?php if ($result->status == 'Confirmed') { ?>
 									<a href="index.php?view=view&code=<?php echo $result->confirmation_code; ?>" class="btn btn-primary btn-xs"><i class="icon-edit"></i>View</a>
-									<a href="controller.php?action=cancel&code=<?php echo $result->confirmation_code; ?>" class="btn btn-primary btn-xs"><i class="icon-edit"></i>Cancel</a>
 									<a href="controller.php?action=checkin&code=<?php echo $result->confirmation_code; ?>" class="btn btn-success btn-xs"><i class="icon-edit"></i>Check in</a>
 								<?php } elseif ($result->status == 'Checkedin') { ?>
 									<a href="index.php?view=view&code=<?php echo $result->confirmation_code; ?>" class="btn btn-primary btn-xs"><i class="icon-edit"></i>View</a>
@@ -52,7 +54,7 @@
 								<?php } elseif ($result->status == 'Checkedout') { ?>
 									<a href="index.php?view=view&code=<?php echo $result->confirmation_code; ?>" class="btn btn-primary btn-xs"><i class="icon-edit"></i>View</a>
 								<?php } elseif ($result->status == 'Cancelled') { ?>
-									<p  class="badge">Cancelled</p>
+									<p class="badge">Cancelled</p>
 								<?php } else { ?>
 									<a href="index.php?view=view&code=<?php echo $result->confirmation_code; ?>" class="btn btn-primary btn-xs"><i class="icon-edit"></i>View</a>
 									<a href="controller.php?action=cancel&code=<?php echo $result->confirmation_code; ?>" class="btn btn-primary btn-xs"><i class="icon-edit"></i>Cancel</a>

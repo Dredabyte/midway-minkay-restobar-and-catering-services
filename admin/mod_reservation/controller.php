@@ -29,33 +29,55 @@ switch ($action) {
 }
 function doCheckout()
 {
-	global $mydb;
+    global $mydb;
 
-	if (isset($_GET['code'])) {
-		$confirmationCode = $_GET['code'];
+    if (isset($_GET['code'])) {
+        $confirmationCode = $_GET['code'];
 
-		// Update the reservation status to 'Checkedout'
-		$reservationUpdateSql = "UPDATE `reservation` SET `status`='Checkedout' WHERE `confirmation_code`='$confirmationCode'";
-		$mydb->setQuery($reservationUpdateSql);
-		$reservationUpdateResult = $mydb->executeQuery();
+        // Fetch the room_id associated with this reservation
+        $roomQuery = "SELECT room_id FROM `reservation` WHERE `confirmation_code`='$confirmationCode'";
+        $mydb->setQuery($roomQuery);
+        $roomResult = $mydb->loadResultList();
 
-		// Update the payment status to 'Checkedout'
-		$paymentUpdateSql = "UPDATE `payment` SET `status`='Checkedout' WHERE `confirmation_code`='$confirmationCode'";
-		$mydb->setQuery($paymentUpdateSql);
-		$paymentUpdateResult = $mydb->executeQuery();
+        if (count($roomResult) > 0) {
+            // Extract the room_id
+            $roomId = $roomResult[0]->room_id;
 
-		if ($reservationUpdateResult && $paymentUpdateResult) {
-			message("Reservation Updated successfully!", "success");
-		} else {
-			message("Failed to update reservation.", "error");
-		}
+            // Update the reservation status to 'Checkedout'
+            $reservationUpdateSql = "UPDATE `reservation` SET `status`='Checkedout' WHERE `confirmation_code`='$confirmationCode'";
+            $mydb->setQuery($reservationUpdateSql);
+            $reservationUpdateResult = $mydb->executeQuery();
 
-		redirect('index.php');
-	} else {
-		message("Invalid confirmation code.", "error");
-		redirect('index.php');
-	}
+            // Update the payment status to 'Checkedout'
+            $paymentUpdateSql = "UPDATE `payment` SET `status`='Checkedout' WHERE `confirmation_code`='$confirmationCode'";
+            $mydb->setQuery($paymentUpdateSql);
+            $paymentUpdateResult = $mydb->executeQuery();
+
+            if ($reservationUpdateResult && $paymentUpdateResult) {
+                // Update the room availability (assuming your room table has a room_num column)
+                $roomUpdateSql = "UPDATE `room` SET `room_num` = `room_num` + 1 WHERE `room_id` = '$roomId'";
+                $mydb->setQuery($roomUpdateSql);
+                $roomUpdateResult = $mydb->executeQuery();
+
+                if ($roomUpdateResult) {
+                    message("Reservation Updated successfully!", "success");
+                } else {
+                    message("Failed to update room availability.", "error");
+                }
+            } else {
+                message("Failed to update reservation.", "error");
+            }
+        } else {
+            message("Invalid confirmation code or room not found.", "error");
+        }
+
+        redirect('index.php');
+    } else {
+        message("Invalid confirmation code.", "error");
+        redirect('index.php');
+    }
 }
+
 
 function doCheckin()
 {

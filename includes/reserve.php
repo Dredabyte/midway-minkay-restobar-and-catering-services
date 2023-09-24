@@ -20,15 +20,6 @@ class Reservation{
 			$cur = $mydb->loadSingleResult();
 			return $cur;
 	}
-	// function find_all_reservation($name=""){
-	// 		global $mydb;
-	// 		$mydb->setQuery("SELECT * 
-	// 						FROM  ".self::$tbl_name." 
-	// 						WHERE  `amen_name` ='{$name}'");
-	// 		$cur = $mydb->executeQuery();
-	// 		$row_count = $mydb->num_rows($cur);//get the number of count
-	// 		return $row_count;
-	// }
 
 	
 	/*---Instantiation of Object dynamically---*/
@@ -83,10 +74,6 @@ class Reservation{
 	
 	public function create() {
 		global $mydb;
-		// Don't forget your SQL syntax and good habits:
-		// - INSERT INTO table (key, key) VALUES ('value', 'value')
-		// - single-quotes around all values
-		// - escape all values to prevent SQL injection
 		$attributes = $this->sanitized_attributes();
 		$sql = "INSERT INTO ".self::$tbl_name." (";
 		$sql .= join(", ", array_keys($attributes));
