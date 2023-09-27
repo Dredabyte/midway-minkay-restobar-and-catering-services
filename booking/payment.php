@@ -1,51 +1,41 @@
 <?php
 
-  date_default_timezone_set('Asia/Manila');
-  $currentTimestamp = date('Y-m-d H:i:s');
-if (!isset($_SESSION['monbela_cart'])) {
-  # code...
-  redirect(WEB_ROOT . 'index.php');
-}
+date_default_timezone_set('Asia/Manila');
+$currentTimestamp = date('Y-m-d H:i:s');
+
 function createRandomPassword()
 {
-
   $chars = "abcdefghijkmnopqrstuvwxyz023456789";
-
   srand((float)microtime() * 1000000);
-
   $i = 0;
-
   $pass = '';
+
   while ($i <= 7) {
-
     $num = rand() % 33;
-
     $tmp = substr($chars, $num, 1);
-
     $pass = $pass . $tmp;
-
     $i++;
   }
 
   return $pass;
 }
 
-$confirmation = createRandomPassword();
-$_SESSION['confirmation'] = $confirmation;
 
 
+if (!isset($_SESSION['monbela_cart'])) {
+  redirect(WEB_ROOT . 'index.php');
+}
 
 $count_cart = count($_SESSION['monbela_cart']);
 
 if (isset($_POST['btnsubmitbooking'])) {
-
-
   if (!isset($_SESSION['guest_id'])) {
 
 
     $guest = new Guest();
     $guest->firstname          = $_SESSION['name'];
     $guest->lastname          = $_SESSION['last'];
+    $guest->email          = $_SESSION['email'];
     $guest->city           = $_SESSION['city'];
     $guest->address        = $_SESSION['address'];
     $guest->birthdate           = date_format(date_create($_SESSION['dbirth']), 'Y-m-d');
@@ -57,7 +47,6 @@ if (isset($_POST['btnsubmitbooking'])) {
     $guest->zip_code              = $_SESSION['zip'];
     $guest->create();
     $lastguest = $guest->id;
-
     $_SESSION['guest_id'] =   $lastguest;
   }
 
@@ -65,10 +54,8 @@ if (isset($_POST['btnsubmitbooking'])) {
 
 
   for ($i = 0; $i < $count_cart; $i++) {
-
-
     $reservation = new Reservation();
-    $reservation->confirmation_code  = $_SESSION['confirmation'];
+    $reservation->confirmation_code = $_SESSION['confirmation'];
     $reservation->trans_date = gmdate('Y-m-d H:i:s');
     $reservation->room_id            = $_SESSION['monbela_cart'][$i]['monbelaroomid'];
     $reservation->arrival           = date_format(date_create($_SESSION['monbela_cart'][$i]['monbelacheckin']), 'Y-m-d');
@@ -78,27 +65,22 @@ if (isset($_POST['btnsubmitbooking'])) {
     $reservation->purpose          = '';
     $reservation->status            = 'Pending';
     $reservation->create();
-
-
     @$tot += $_SESSION['monbela_cart'][$i]['monbelaroomprice'];
   }
 
   $item = count($_SESSION['monbela_cart']);
 
+
   // Your SQL query
   $sql = "INSERT INTO `payment` (`trans_date`, `confirmation_code`, `p_qty`, `guest_id`, `price`, `msg_view`, `status`)
-       VALUES ('$currentTimestamp', '" . $_SESSION['confirmation'] . "', $item, " . $_SESSION['guest_id'] . ", $tot, 0, 'Pending')";
+  VALUES ('$currentTimestamp', '" . $_SESSION['confirmation'] . "', $item, '" . $_SESSION['guest_id'] . "', $tot, 0, 'Pending')";
 
-
-
-
-
+  // Generate the confirmation code and store it in a variable
+  $_SESSION['confirmation'] = createRandomPassword();
 
 
   $mydb->setQuery($sql);
   $msg = $mydb->executeQuery();
-
-
 
   unset($_SESSION['monbela_cart']);
   unset($_SESSION['pay']);
@@ -136,10 +118,7 @@ if (isset($_POST['btnsubmitbooking'])) {
 
 
 <form action="index.php?view=payment" method="post" name="personal">
-
-
   <div class="col-md-12">
-
     <div class="row">
       <div class="col-md-8 col-sm-4">
         <div class="col-md-12">
@@ -163,12 +142,12 @@ if (isset($_POST['btnsubmitbooking'])) {
         </div>
         <div class="col-md-12">
           <label>Transaction Id:</label>
-          <?php echo $_SESSION['confirmation']; ?>
+          <?php echo $_SESSION['confirmation'] ?>
         </div>
 
       </div>
     </div>
-    <br />
+    <br>
 
 
 
@@ -224,17 +203,17 @@ if (isset($_POST['btnsubmitbooking'])) {
       </div>
     </div>
     <div class="col-md-8 col-sm-4">
-        <div align="center" class="col-md-12">
-          <p><b>NOTE: </b> Please make a <u>10% downpayment</u> of your <strong>total billing</strong> amount, including your <b>Transaction ID</b>, and send it to the provided Gcash number.</p>
-        </div>
-        <div align="center" class="col-md-12">
-            <a href="<?php echo WEB_ROOT;  ?>images/payment_logo.png"><img class="img-rounded" src="<?php echo WEB_ROOT;  ?>images/payment_logo.png" style="height: 100px;"></a>
-        </div>
-        <br>
-        <div class="col-md-12">
-            <pre>After you've sent the downpayment, please allow a few minutes for your <br>booking to be confirmed.</pre>
-        </div>
+      <div align="center" class="col-md-12">
+        <p><b>NOTE: </b> Please make a <u>10% downpayment</u> of your <strong>total billing</strong> amount, including your <b>Transaction ID</b>, and send it to the provided Gcash number.</p>
       </div>
+      <div align="center" class="col-md-12">
+        <a href="<?php echo WEB_ROOT;  ?>images/payment_logo.png"><img class="img-rounded" src="<?php echo WEB_ROOT;  ?>images/payment_logo.png" style="height: 100px;"></a>
+      </div>
+      <br>
+      <div class="col-md-12">
+        <pre>After you've sent the downpayment, please allow a few minutes for your <br>booking to be confirmed.</pre>
+      </div>
+    </div>
     <div class="row">
       <h3 align="right">Total: &#8369 <?php echo   $_SESSION['pay']; ?></h3>
     </div>

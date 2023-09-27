@@ -33,9 +33,9 @@ if (!isset($_SESSION['monbela_cart'])) {
       <div class="col-md-12">
           <!-- Verify accounts --> 
                 <ul id="myTab" class="nav nav-tabs">
-                    <li class="active"><a href="#service-one" data-toggle="tab"><i class="fa fa-tree"></i> Login</a>
+                    <li class="active"><a href="#service-one" data-toggle="tab"><i class="fa fa-sign-in"></i> Login</a>
                     </li>
-                    <li class=""><a href="#service-two" data-toggle="tab"><i class="fa fa-car"></i> Register</a>
+                    <li class=""><a href="#service-two" data-toggle="tab"><i class="fa fa-edit"></i> Register</a>
                     </li>
                     
                 </ul>
@@ -48,12 +48,7 @@ if (!isset($_SESSION['monbela_cart'])) {
                     </div>
 
                     <div class="tab-pane fade" id="service-two">
-                        <!-- <h4>Service Two</h4> -->
-                      <?php  require_once 'personalinfo.php'; ?>
-                       <!--  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae repudiandae fugiat illo cupiditate excepturi esse officiis consectetur, laudantium qui voluptatem. Ad necessitatibus velit, accusantium expedita debitis impedit rerum totam id. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus quibusdam recusandae illum, nesciunt, architecto, saepe facere, voluptas eum incidunt dolores magni itaque autem neque velit in. At quia quaerat asperiores.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae repudiandae fugiat illo cupiditate excepturi esse officiis consectetur, laudantium qui voluptatem. Ad necessitatibus velit, accusantium expedita debitis impedit rerum totam id. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus quibusdam recusandae illum, nesciunt, architecto, saepe facere, voluptas eum incidunt dolores magni itaque autem neque velit in. At quia quaerat asperiores.</p>
-                 --> 
-                 
+                      <?php  require_once 'personalinfo.php'; ?>          
                     </div>
                     
                 </div> 
@@ -76,12 +71,12 @@ if (!isset($_SESSION['monbela_cart'])) {
   <div class="col-md-12">
     <form action="<?php echo  WEB_ROOT."login.php" ?>" method="post">
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" name="username" placeholder="Username">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        <input type="text" class="form-control" name="username" placeholder="Username">
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" name="pass" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        <input type="password" class="form-control" name="pass" placeholder="Password">
       </div>
       <div class="row">
         <div class="col-xs-8">

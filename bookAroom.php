@@ -99,7 +99,7 @@
 
                 $curs = $mydb->loadResultList();
 
-                $resNum = $result->room_num - count($curs);
+                $resNum = $result->room_num;
 
 
 
@@ -108,77 +108,21 @@
                 $status = isset($rows['status']) ? $rows['status'] : '';
 
 
-                //$availRoom = $result->ROOMNUM;
-
-
-                if ($resNum == 0) {
-
-                  if ($status == 'Confirmed') {
-                    $btn =  '<div style="margin-top:10px; color: rgba(0,0,0,1); font-size:16px;"><strong>Fully Reserve!</strong></div>';
-                    $img_title = ' 
-
-                           <figcaption class="img-title-active">
-                                <h5>Reserve!</h5>    
-                            </figcaption>
-
-
-                    ';
-                  } elseif ($status == 'Checkedin') {
-                    $btn =  '<div style="margin-top:10px; color: rgba(0,0,0,1); font-size:16px;"><strong>Fully Book!</strong></div>';
-                    $img_title = ' 
-
-                           <figcaption class="img-title-active">
-                                <h5>Book!</h5>    
-                            </figcaption>
-
-
-                    ';
-                  } else {
-                    $btn =  '
-                 <div class="form-group">
-                        <div class="row">
-                          <div class="col-xs-12 col-sm-12">
-                            <input type="submit" class="btn monbela-btn  btn-primary btn-sm" id="booknow" name="booknow" onclick="return validateBook();" value="Book Now!"/>
-                                                   
-                           </div>
-                        </div>
-                      </div>';
-                    $img_title = ' 
-
-                           <figcaption class="img-title">
-                                <h5>' . $result->room . ' <br/> ' . $result->room_description . '  <br/>
-                                ' . $result->accomodation_name . ' <br/> 
-                                ' . $result->accomodation_description . '<br/>  
-                                Number of Person:' . $result->num_person . ' <br/> 
-                                Price:' . $result->price . '</h5>    
-                            </figcaption>
-
-
-                    ';
-                  }
+                if ($resNum > 0) {
+                  // Room is available for booking
+                  $btn = '
+              <div class="form-group">
+                  <div class="row">
+                      <div class="col-xs-12 col-sm-12">
+                          <input type="submit" class="btn monbela-btn btn-primary btn-sm" id="booknow" name="booknow" onclick="return validateBook();" value="Book Now!"/>
+                      </div>
+                  </div>
+              </div>';
                 } else {
-                  $btn =  '
-                 <div class="form-group">
-                        <div class="row">
-                          <div class="col-xs-12 col-sm-12">
-                            <input type="submit" class="btn monbela-btn  btn-primary btn-sm" id="booknow" name="booknow" onclick="return validateBook();" value="Book Now!"/>
-                                                   
-                           </div>
-                        </div>
-                      </div>';
-                  $img_title = ' 
-
-                           <figcaption class="img-title">
-                                <h5>' . $result->room . ' <br/> ' . $result->room_description . '  <br/>
-                                ' . $result->accomodation_name . ' <br/> 
-                                ' . $result->accomodation_description . '<br/>  
-                                Number of Person:' . $result->num_person . ' <br/> 
-                                Price:' . $result->price . '</h5>    
-                            </figcaption>
-
-
-                    ';
+                  // Room is fully booked
+                  $btn = '<div style="margin-top:10px; color: rgba(0,0,0,1); font-size:16px;"><strong>Fully Booked</strong></div>';
                 }
+  
                 // ============================================================================================================================
 
 
@@ -187,39 +131,40 @@
                 <form method="POST" action="index.php?p=accomodation">
                   <input type="hidden" name="ROOMPRICE" value="<?php echo $result->price; ?>">
                   <input type="hidden" name="room_id" value="<?php echo $result->room_id; ?>">
-
-                  <div id="roomimg" class="col-md-4 img-portfolio">
-                    <div class="wrapper clearfix">
-                      <a href="<?php echo WEB_ROOT; ?>index.php?p=largeview">
-                        <figure class="gallery-item ">
-                          <?php if (is_file(WEB_ROOT . 'admin/mod_room/' . $result->room_image)) : ?>
-                            <img class="img-responsive" src="<?php echo WEB_ROOT . 'admin/mod_room/' . $result->room_image; ?>">
-
-                          <?php else : ?>
-                            <img class="img-responsive" src="<?php echo WEB_ROOT . 'no-img.png'; ?>">
-                          <?php endif; ?>
-                          <!-- <?php echo $img_title; ?> -->
-                          <figcaption class="img-title-active">
-                            <h5> &#8369 <?php echo $result->price; ?></h5>
-                          </figcaption>
+                  <div class="container">
+                    <div id="roomimg" class="col-md-12 img-portfolio">
+                      <div class="wrapper clearfix">
+                        <a href="#">
+                          <figure class="gallery-item ">
+                            <?php if (is_file('admin/mod_room/' . $result->room_image)) : ?>
+                              <img class="img-responsive img-hover" src="<?php echo WEB_ROOT . 'admin/mod_room/' . $result->room_image; ?>">
+                            <?php else : ?>
+                              <img class="img-responsive img-hover" src="<?php echo WEB_ROOT . 'no-img.png'; ?>">
+                            <?php endif; ?>
 
 
-                        </figure>
-                      </a>
-                    </div>
-                    <div class="descRoom">
-                      <ul>
-                        <h4>
-                          <p><?php echo $result->room; ?></p>
-                        </h4>
-                        <li><?php echo $result->room_description; ?></li>
-                        <li>Number Person : <?php echo $result->num_person; ?></li>
-                        <li>Remaining Rooms :<?php echo  $resNum; ?></li>
-                        <li style="list-style:none;"><?php echo $btn; ?></li>
-                      </ul>
+                            <figcaption class="img-title-active">
+                              <h5> &#8369 <?php echo $result->price; ?></h5>
+                            </figcaption>
+
+
+                          </figure>
+                        </a>
+                        <ul style="font-size:10px">
+                          <h4>
+                            <p><?php echo $result->room; ?></p>
+                          </h4>
+                          <li><?php echo $result->accomodation_name; ?></li>
+                          <li><?php echo $result->room_description; ?></li>
+                          <li>Number Person : <?php echo $result->num_person; ?></li>
+                          <li>Remaining Rooms :<?php echo  $resNum; ?></li>
+                          <div class="row">
+                            <?php echo $btn; ?>
+                          </div>
+                        </ul>
+                      </div>
                     </div>
                   </div>
-
                 </form>
               <?php
 

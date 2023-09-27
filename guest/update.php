@@ -6,6 +6,7 @@
 		$guest = new Guest();
 		$guest->firstname          = $_POST['name'];
 		$guest->lastname          = $_POST['last'];
+		$guest->email          = $_POST['email'];
 		$guest->city           = $_POST['city'];
 		$guest->address        = $_POST['address'];
 		$guest->birthdate           = date_format(date_create($_POST['dbirth']), 'Y-m-d');

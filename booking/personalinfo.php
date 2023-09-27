@@ -2,14 +2,11 @@
 if (isset($_POST['submit'])) {
 	$arival   = $_SESSION['from'];
 	$departure = $_SESSION['to'];
-	/*$adults = $_SESSION['adults'];
-  $child = $_SESSION['child'];*/
-	// $adults = 1;
-	// $child = 1;
 	$room_id = $_SESSION['room_id'];
 
 	$_SESSION['name']   		= $_POST['name'];
 	$_SESSION['last']   		= $_POST['last'];
+	$_SESSION['email']   		= $_POST['email'];
 	$_SESSION['dbirth']   		= $_POST['dbirth'];
 	$_SESSION['nationality']   = $_POST['nationality'];
 	$_SESSION['city']   		= $_POST['city'];
@@ -19,21 +16,6 @@ if (isset($_POST['submit'])) {
 	$_SESSION['username']		= $_POST['username'];
 	$_SESSION['pass']  		= $_POST['pass'];
 	$_SESSION['pending']  		= 'pending';
-
-
-	// $name   = $_SESSION['name']; 
-	// $last   = $_SESSION['last'];
-	// $country= $_SESSION['country'];
-	// $city   = $_SESSION['city'] ;
-	// $address =$_SESSION['address'];
-	// $zip    =  $_SESSION['zip'] ;
-	// $phone  = $_SESSION['phone'];
-	// $email  = $_SESSION['email'];
-	// $password =$_SESSION['pass'];
-
-
-	// $days = dateDiff($arival,$departure);
-
 
 	redirect('index.php?view=payment');
 }
@@ -80,6 +62,16 @@ if (isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
 		</div>
 	</div>
 
+
+	<div class="form-group">
+		<div class="col-md-8">
+			<label class="col-md-4 control-label" for="last">EMAIL:</label>
+
+			<div class="col-md-8">
+				<input name="email" type="email" class="form-control input-sm" id="email" />
+			</div>
+		</div>
+	</div>
 
 
 	<div class="form-group">
@@ -142,17 +134,6 @@ if (isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
 			</div>
 		</div>
 	</div>
-	<!--     
-			          <div class="form-group">
-			            <div class="col-md-8">
-			              <label class="col-md-4 control-label" for=
-			              "cemail">CONFRIM E-MAIL:</label>
-
-			              <div class="col-md-8">
-			                <input name="cemail" type="text" class="form-control input-sm" id="cemail" />
-			              </div>
-			            </div>
-			          </div> -->
 	<div class="form-group">
 		<div class="col-md-8">
 			<label class="col-md-4 control-label" for="password">PASSWORD:</label>
@@ -181,18 +162,23 @@ if (isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
 				I <input type="checkbox" name="condition" value="checkbox" />
 				<small>Agree the <a class="toggle-modal" onclick="OpenPopupCenter('terms_condition.php','Terms And Codition','600','600')"><b>TERMS AND CONDITION</b></a> of this Hotel</small>
 
-				<br />
+				<br>
 				<!-- <img src="captcha_code_file.php?rand=<?php echo rand(); ?>" id='captchaimg' ><a href='javascript: refreshCaptcha();'><img src="<?php echo WEB_ROOT; ?>images/refresh.png" alt="refresh" border="0" style="margin-top:5px; margin-left:5px;" /></a>
-						<br /><small>If you are a Human Enter the code above here :</small><input id="6_letters_code" name="6_letters_code" type="text" class="form-control input-sm" width="20"></p><br/>
-					 -->
+					<br /><small>If you are a Human Enter the code above here :</small><input id="6_letters_code" name="6_letters_code" type="text" class="form-control input-sm" width="20"></p><br/>
+				-->
 			<div class="col-md-4">
 				<input name="submit" type="submit" value="Confirm" class="btn btn-primary" onclick="return personalInfo();" />
 			</div>
 		</div>
-		NOTE:
-		We recommend that your password should be at least 6 characters long and should be different from your username.
-		Your e-mail address must be valid. We use e-mail for communication purposes (order notifications, etc). Therefore, it is essential to provide a valid e-mail address to be able to use our services correctly.
-		All your private data is confidential. We will never sell, exchange or market it in any way. For further information on the responsibilities of both parties, you may refer to us.
+		<div class="col-md-6">
+		<h5>NOTE:<br>
+		We strongly recommend that your password be a minimum of 8 characters long and should not match your username.<br><br>
+
+		Please ensure your email address is accurate and valid. We use email for essential communication such as order notifications. Providing a valid email address is crucial for using our services effectively.<br><br>
+
+		Rest assured, all your private data is kept confidential. We have a strict policy against selling, exchanging, or marketing your personal information in any way. For more details on the responsibilities of both parties, please refer to our terms and conditions.<br>
+		</h5>
+		</div>	
 	</div>
 
 </form>

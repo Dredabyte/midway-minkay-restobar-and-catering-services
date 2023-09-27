@@ -6,25 +6,12 @@ if (!isset($_SESSION['monbela_cart'])) {
 }
 
 
-// if (isset($_POST['profileCheck'])) {
-//   # code...
-//     unset($_SESSION['pay']);
-//    unset($_SESSION['monbela_cart']);
-// }
-
-/*$guestid =$_GET['guestid'];
-$guest = new Guest();
-$result=$guest->single_guest($guestid);*/
-
   $name = $_SESSION['name']; 
   $last = $_SESSION['last'];
-  // $country =$_SESSION['country'];
   $city = $_SESSION['city'] ;
   $address = $_SESSION['address'];
   $zip =  $_SESSION['zip'] ;
   $phone = $_SESSION['phone'];
-  // $email = $_SESSION['email'];
-  // $password =$_SESSION['pass'];
   $stat = $_SESSION['pending'];
 
 ?>
@@ -40,7 +27,6 @@ $result=$guest->single_guest($guestid);*/
 <div class="container"> 
 
     <div class="col-xs-12 col-sm-11">
-      <!--<div class="jumbotron">-->
         <div class="">
            
 
@@ -80,13 +66,6 @@ $result=$guest->single_guest($guestid);*/
           <tbody>
           
             <?php
-
-
-
-
-             // $arival   = $_SESSION['from']; 
-             //  $departure = $_SESSION['to']; 
-              // $days = dateDiff($arival,$departure);
               $count_cart = count($_SESSION['monbela_cart']);
 
                 for ($i=0; $i < $count_cart  ; $i++) {    
@@ -95,7 +74,6 @@ $result=$guest->single_guest($guestid);*/
 
               foreach ($cur as $result) {
                 echo '<tr>'; 
-                // echo '<td></td>';
                 echo '<td>'. $result->room.' '. $result->accomodation_name.'</td>';
                 echo '<td>'.$_SESSION['monbela_cart'][$i]['monbelacheckin'].'</td>';
                 echo '<td>'.$_SESSION['monbela_cart'][$i]['monbelacheckout'].'</td>';
@@ -120,21 +98,10 @@ $result=$guest->single_guest($guestid);*/
                            
               </td>
             </tr>
-            <!--   <tr>
-            <td colspan="4"></td><td colspan="5">
-                  <div class="col-xs-12 col-sm-12" align="right">
-                      <button type="submit" class="btn btn-primary" align="right" name="btnlogin">Payout</button>
-                  </div>
-
-            </td>
-            </tr> -->
-
           </tfoot>  
         </table>
 
     <?php   
-     // unset($_SESSION['pay']);
-     //    unset($_SESSION['monbela_cart']);
         ?>
 <p>We are eagerly anticipating your arrival and would like to advise you of the following in order to help you with your trip planning.Your reservation number is <b><?php echo $_SESSION['confirmation']?>:</b><br/><br/>Should there be a concern with your reservation, a customer service representative will contact you. Otherwise, consider your reservation confirmed.</p>
 <ul>
@@ -162,7 +129,6 @@ monbela Beach Resorts
 </span>
 <div id="divButtons" name="divButtons">
 <a href="print_reservation.php" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-<!-- <input type="button" value="Print" onclick="tablePrint();" class="btn btn-primary"> -->
 </div>
               </form>
  

@@ -107,7 +107,7 @@
             AND room_id =" . $result->room_id);
 
                 $curs = $mydb->loadResultList();
-                $resNum = $result->room_num - count($curs);
+                $resNum = $result->room_num;
 
                 $stats = $mydb->executeQuery();
                 $rows = $mydb->fetch_array($stats);
@@ -230,21 +230,15 @@
                         }
 
                         ?>
-
-
                       </select>
                     </div>
                   </div>
                 </div>
-
-
                 <div class="row">
                   <div class="col-md-10">
                     <button class="btn monbela-btn  btn-primary btn-sm " name="booknowA" type="submit" id="booknowA">Check Availability </button>
-
                   </div>
                 </div>
-
               </div>
             </form>
 
@@ -258,10 +252,6 @@
             .a li {
               list-style: none;
             }
-
-            /* .a  a:hover{
-      color: blue;
-    }*/
           </style>
           <div class="row">
             <div id="sidebarRight-wrap">
@@ -281,16 +271,11 @@
                         <p><?php echo $result->room; ?></p>
                       </a></li>
                   <?php  } ?>
-
-
                 </ul>
               </div>
             </div>
           </div>
-
         </div>
-
       </div>
     </div>
-
   </div>

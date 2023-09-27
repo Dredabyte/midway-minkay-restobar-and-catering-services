@@ -106,7 +106,7 @@ $accomodation = ' | ' . $_GET['q'];
             AND room_id =" . $result->room_id);
 
               $curs = $mydb->loadResultList();
-              $resNum = $result->room_num - count($curs);
+              $resNum = $result->room_num;
 
               $stats = $mydb->executeQuery();
               $rows = $mydb->fetch_array($stats);
