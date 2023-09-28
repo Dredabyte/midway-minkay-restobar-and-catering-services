@@ -44,7 +44,7 @@ $res = $mydb->loadsingleResult();
       <div class="col-sm-4 invoice-col">
         <br />
         <br />
-        <b>Confirmation ID: </b>
+        <b>Reference Number: </b>
         <p style="background-color:blue;color:white"> <?php echo $res->confirmation_code; ?></p>
         <input type="hidden" name="code" value="<?php echo $res->confirmation_code; ?>">
         <br>
