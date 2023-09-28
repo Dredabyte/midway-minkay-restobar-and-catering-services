@@ -1,26 +1,6 @@
 <?php
-
 date_default_timezone_set('Asia/Manila');
 $currentTimestamp = date('Y-m-d H:i:s');
-
-function createRandomPassword()
-{
-  $chars = "abcdefghijkmnopqrstuvwxyz023456789";
-  srand((float)microtime() * 1000000);
-  $i = 0;
-  $pass = '';
-
-  while ($i <= 7) {
-    $num = rand() % 33;
-    $tmp = substr($chars, $num, 1);
-    $pass = $pass . $tmp;
-    $i++;
-  }
-
-  return $pass;
-}
-
-
 
 if (!isset($_SESSION['monbela_cart'])) {
   redirect(WEB_ROOT . 'index.php');
@@ -29,9 +9,14 @@ if (!isset($_SESSION['monbela_cart'])) {
 $count_cart = count($_SESSION['monbela_cart']);
 
 if (isset($_POST['btnsubmitbooking'])) {
+  if (isset($_POST['confirmation_code']) && !empty($_POST['confirmation_code'])) {
+    $confirmation_code = $_POST['confirmation_code'];
+  } else {
+    $error_message = "Confirmation code is required.";
+    exit;
+  }
+
   if (!isset($_SESSION['guest_id'])) {
-
-
     $guest = new Guest();
     $guest->firstname          = $_SESSION['name'];
     $guest->lastname          = $_SESSION['last'];
@@ -52,10 +37,9 @@ if (isset($_POST['btnsubmitbooking'])) {
 
   $count_cart = count($_SESSION['monbela_cart']);
 
-
   for ($i = 0; $i < $count_cart; $i++) {
     $reservation = new Reservation();
-    $reservation->confirmation_code = $_SESSION['confirmation'];
+    $reservation->confirmation_code = $confirmation_code;
     $reservation->trans_date = gmdate('Y-m-d H:i:s');
     $reservation->room_id            = $_SESSION['monbela_cart'][$i]['monbelaroomid'];
     $reservation->arrival           = date_format(date_create($_SESSION['monbela_cart'][$i]['monbelacheckin']), 'Y-m-d');
@@ -70,14 +54,9 @@ if (isset($_POST['btnsubmitbooking'])) {
 
   $item = count($_SESSION['monbela_cart']);
 
-
-  // Your SQL query
+  // Your SQL query with the new confirmation code
   $sql = "INSERT INTO `payment` (`trans_date`, `confirmation_code`, `p_qty`, `guest_id`, `price`, `msg_view`, `status`)
-  VALUES ('$currentTimestamp', '" . $_SESSION['confirmation'] . "', $item, '" . $_SESSION['guest_id'] . "', $tot, 0, 'Pending')";
-
-  // Generate the confirmation code and store it in a variable
-  $_SESSION['confirmation'] = createRandomPassword();
-
+  VALUES ('$currentTimestamp', '$confirmation_code', $item, '" . $_SESSION['guest_id'] . "', $tot, 0, 'Pending')";
 
   $mydb->setQuery($sql);
   $msg = $mydb->executeQuery();
@@ -89,25 +68,20 @@ if (isset($_POST['btnsubmitbooking'])) {
   $_SESSION['activity'] = 1;
 
 ?>
-
   <script type="text/javascript">
     alert("Booking is successfully submitted.");
   </script>
 
 <?php
-
   redirect(WEB_ROOT . "index.php");
 }
 ?>
 
 <div id="accom-title">
   <div class="pagetitle">
-    <h1>Billing Details
-
-    </h1>
+    <h1>Billing Details</h1>
   </div>
 </div>
-
 <div id="bread">
   <ol class="breadcrumb">
     <li><a href="<?php echo WEB_ROOT; ?>index.php">Home</a> </li>
@@ -115,7 +89,6 @@ if (isset($_POST['btnsubmitbooking'])) {
     <li class="active">Booking Details</li>
   </ol>
 </div>
-
 
 <form action="index.php?view=payment" method="post" name="personal">
   <div class="col-md-12">
@@ -141,16 +114,12 @@ if (isset($_POST['btnsubmitbooking'])) {
           <?php echo date("m/d/Y"); ?>
         </div>
         <div class="col-md-12">
-          <label>Transaction Id:</label>
-          <?php echo $_SESSION['confirmation'] ?>
+          <label>Reference No:</label>
+          <input type="text" name="confirmation_code" value="">
         </div>
-
       </div>
     </div>
     <br>
-
-
-
 
     <div class="row">
       <div class="table-responsive">
@@ -171,18 +140,13 @@ if (isset($_POST['btnsubmitbooking'])) {
             if (isset($_SESSION['monbela_cart'])) {
               $count_cart = count($_SESSION['monbela_cart']);
 
-
               for ($i = 0; $i < $count_cart; $i++) {
 
                 $query = "SELECT * FROM `room` r ,`accomodation` a WHERE r.`accomodation_id`=a.`accomodation_id` AND room_id=" . $_SESSION['monbela_cart'][$i]['monbelaroomid'];
                 $mydb->setQuery($query);
                 $cur = $mydb->loadResultList();
                 foreach ($cur as $result) {
-
-
             ?>
-
-
                   <tr>
                     <td><?php echo  $result->room . ' ' . $result->room_description; ?></td>
                     <td><?php echo  date_format(date_create($_SESSION['monbela_cart'][$i]['monbelacheckin']), "m/d/Y"); ?></td>
@@ -203,13 +167,24 @@ if (isset($_POST['btnsubmitbooking'])) {
       </div>
     </div>
     <div class="col-md-8 col-sm-4">
-      <div align="center" class="col-md-12">
-        <p><b>NOTE: </b> Please make a <u>10% downpayment</u> of your <strong>total billing</strong> amount, including your <b>Transaction ID</b>, and send it to the provided Gcash number.</p>
+      <div align="left" class="col-md-12">
+        <p><b>NOTE: </b> Please make a <u>10% downpayment</u> of your <strong>total billing</strong> amount to the Gcash number provided. Then <u>copy</u> and <u>paste</u> the <b>Reference Number</b> of transaction in the box.</p>
       </div>
       <div align="center" class="col-md-12">
         <a href="<?php echo WEB_ROOT;  ?>images/payment_logo.png"><img class="img-rounded" src="<?php echo WEB_ROOT;  ?>images/payment_logo.png" style="height: 100px;"></a>
       </div>
       <br>
+      <div class="row">
+        <?php
+        if (isset($_SESSION['pay']) && is_numeric($_SESSION['pay'])) {
+          $totalAmount = floatval($_SESSION['pay']);
+
+          $tenPercent = $totalAmount * 0.10;
+
+          echo "<h4>10% of your total amount is: &#8369 " . number_format($tenPercent, 2) . "</h4>";
+        }
+        ?>
+      </div>
       <div class="col-md-12">
         <pre>After you've sent the downpayment, please allow a few minutes for your <br>booking to be confirmed.</pre>
       </div>

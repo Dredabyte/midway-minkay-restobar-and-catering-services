@@ -13,7 +13,7 @@
 						<td width="90"><strong>Guest</strong></td>
 						<!--<td width="10"><strong>Confirmation</strong></td>-->
 						<td width="80"><strong>Transaction Date</strong></td>
-						<td width="80"><strong>Confimation Code</strong></td>
+						<td width="80"><strong>Reference Number</strong></td>
 						<td width="70"><strong>Total Rooms</strong></td>
 						<td width="80"><strong>Total Price</strong></td>
 						<!-- <td width="80"><strong>Nights</strong></td> -->
