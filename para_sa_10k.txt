@@ -1,10 +1,10 @@
-- facebook, email, contact number. (ADD)
+- facebook, email, contact number. (ADD) - done
 - rate us(reviews and feedbacks) to the website for promotion (ADD)
-- accomodation (rewrite)
-- edit and rewrite some room names and othet details.
-- rules (update & add)
--  MOP (gcash number) only the reference number
-- terms and condition
-- 10% down payment cant refund nonetheless the date of reservation be move
-- more detailed sa room
-- JavaScript for graph (sales, )
+- accomodation (rewrite) -done
+- edit and rewrite some room names and othet details. - done
+- rules (update & add) - done
+-  MOP (gcash number) only the reference number - done
+- terms and condition - done
+- 10% down payment cant refund nonetheless the date of reservation be move - done
+- more detailed sa room - done
+- JavaScript for graph (sales, ) - 

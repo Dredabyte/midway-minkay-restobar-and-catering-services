@@ -7,8 +7,8 @@
         </div>
 
         <div class="col-md-8">
-            <a href="images/cover-photo.jpeg">
-                <img class="img-rounded" src="<?php echo WEB_ROOT; ?>images/cover-photo.jpeg" alt="">
+            <a href="images/cover-photo.JPG">
+                <img class="img-rounded" src="<?php echo WEB_ROOT; ?>images/cover-photo.JPG" alt="">
             </a>
         </div>
 
@@ -70,34 +70,82 @@
 <div class="row">
     <div class="col-md-12 ">
         <div class="page-header">
-            <h1>Accomodation</h1>
+            <h1>Gallery</h1>
         </div>
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
                 <div class="item active">
-                    <img class="img-responsive" width="100%" src="<?php echo WEB_ROOT; ?>images/header-bg1.jpg">
+                    <img class="img-responsive" width="100%" src="<?php echo WEB_ROOT; ?>images/cover-photo1.jpeg">
                     <figcaption class="img-title-active">
-                        <h5 style="margin-left: 15px;"> Standard Room</h5>
-                        <h1> &#8369 1,430</h1>
                     </figcaption>
                 </div>
 
                 <div class="item ">
-                    <img class="img-responsive" width="100%" src="<?php echo WEB_ROOT; ?>images/header-bg1.jpg">
+                    <img class="img-responsive" width="100%" src="<?php echo WEB_ROOT; ?>images/IMG_0617.JPG">
                     <figcaption class="img-title-active">
-                        <h5 style="margin-left: 15px;">Travellers Time</h5>
-                        <h1> &#8369 1,430</h1>
                     </figcaption>
                 </div>
                 <div class="item">
-                    <img class="img-responsive" width="100%" src="<?php echo WEB_ROOT; ?>images/header-bg1.jpg">
+                    <img class="img-responsive" width="100%" src="<?php echo WEB_ROOT; ?>images/IMG_0620.JPG">
                     <figcaption class="img-title-active">
-                        <h5 style="margin-left: 15px;">Bayanihan Room</h5>
-                        <h1> &#8369 1,430</h1>
                     </figcaption>
-
+                </div>
+                <div class="item active">
+                    <img class="img-responsive" width="100%" src="<?php echo WEB_ROOT; ?>images/IMG_0626.JPG">
+                    <figcaption class="img-title-active">
+                    </figcaption>
+                </div>
+                <div class="item active">
+                    <img class="img-responsive" width="100%" src="<?php echo WEB_ROOT; ?>images/IMG_0628.JPG">
+                    <figcaption class="img-title-active">
+                    </figcaption>
+                </div>
+                <div class="item active">
+                    <img class="img-responsive" width="100%" src="<?php echo WEB_ROOT; ?>images/IMG_0641.JPG">
+                    <figcaption class="img-title-active">
+                    </figcaption>
+                </div>
+                <div class="item active">
+                    <img class="img-responsive" width="100%" src="<?php echo WEB_ROOT; ?>images/IMG_0646.JPG">
+                    <figcaption class="img-title-active">
+                    </figcaption>
+                </div>
+                <div class="item active">
+                    <img class="img-responsive" width="100%" src="<?php echo WEB_ROOT; ?>images/IMG_0655.JPG">
+                    <figcaption class="img-title-active">
+                    </figcaption>
+                </div>
+                <div class="item active">
+                    <img class="img-responsive" width="100%" src="<?php echo WEB_ROOT; ?>images/IMG_0656.JPG">
+                    <figcaption class="img-title-active">
+                    </figcaption>
+                </div>
+                <div class="item active">
+                    <img class="img-responsive" width="100%" src="<?php echo WEB_ROOT; ?>images/IMG_0657.JPG">
+                    <figcaption class="img-title-active">
+                    </figcaption>
+                </div>
+                <div class="item active">
+                    <img class="img-responsive" width="100%" src="<?php echo WEB_ROOT; ?>images/IMG_0693.JPG">
+                    <figcaption class="img-title-active">
+                    </figcaption>
+                </div>
+                <div class="item active">
+                    <img class="img-responsive" width="100%" src="<?php echo WEB_ROOT; ?>images/IMG_0694.JPG">
+                    <figcaption class="img-title-active">
+                    </figcaption>
+                </div>
+                <div class="item active">
+                    <img class="img-responsive" width="100%" src="<?php echo WEB_ROOT; ?>images/IMG_0735.JPG">
+                    <figcaption class="img-title-active">
+                    </figcaption>
+                </div>
+                <div class="item active">
+                    <img class="img-responsive" width="100%" src="<?php echo WEB_ROOT; ?>images/IMG_0705.JPG">
+                    <figcaption class="img-title-active">
+                    </figcaption>
                 </div>
             </div>
 
