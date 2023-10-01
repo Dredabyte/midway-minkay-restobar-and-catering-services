@@ -63,3 +63,32 @@
     <?php } ?>
   </div>
 </div>
+<hr>
+<div class="container">
+  <h3>Feedbacks</h3>
+  <div class="panel-body">
+    <table id="table" class="table table-bordered table-striped" cellspacing="0">
+      <thead>
+        <tr>
+          <td><strong>Name</strong></td>
+          <td><strong>Email</strong></td>
+          <td><strong>Message(s)</strong></td>
+        </tr>
+      </thead>
+      <tbody>
+        <?php 
+          $mydb->setQuery("SELECT `name`, `email`, `message` FROM `message_us`");
+          $cur = $mydb->loadResultList();
+          foreach ($cur as $result) {
+          ?>
+            <tr>
+              <td><?php echo $result->name; ?></td>
+              <td><?php echo $result->email; ?></td>
+              <td><?php echo $result->message; ?></td>
+            </tr>
+          <?php }
+          ?>
+      </tbody>
+    </table>
+  </div>
+</div>

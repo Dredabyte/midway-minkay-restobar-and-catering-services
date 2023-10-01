@@ -29,21 +29,6 @@
 			<div class="modal-body">
 				<div class="alert alert-info">Reservation Details</div>
 				<form method="post" action="processreservation.php?action=delete">
-
-					<?php
-					//$mydb->setQuery("SELECT *,roomName,firstname, lastname FROM reservation re,room ro,guest gu  WHERE re.roomNo = ro.roomNo AND re.guest_id=gu.guest_id");
-					/*$mydb->setQuery("SELECT * , roomName, firstname, lastname
-FROM reservation re, room ro, guest gu, roomtype rt
-WHERE re.roomNo = ro.roomNo
-AND ro.`typeID` = rt.`typeID` 
-AND re.guest_id = gu.guest_id AND reservation_id=".$_GET['res_id']);
-$cur = $mydb->loadSingleResult();
-*/
-					//echo $resid;
-					//echo $_GET['res_id'];
-
-
-					?>
 					<p>
 						<strong>Confirmation</strong>:<br />
 						<strong>Name</strong><br />

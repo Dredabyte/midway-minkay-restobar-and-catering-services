@@ -1,6 +1,3 @@
-<?php
-//require_once("../includes/initialize.php");
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,7 +48,7 @@
 				//submit parameter
 				data: {
 					id: id,
-					name: 'kevin'
+					name: 'dred'
 				}
 			})
 		});

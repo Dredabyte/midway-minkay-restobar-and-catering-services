@@ -17,7 +17,7 @@
     </div>
     <div class="col-md-8">
       <h3>Leave us a message</h3>
-      <form action="includes/message_us.php?msg=add" method="POST">
+      <form method="POST">
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
@@ -58,3 +58,26 @@
     </div>
   </div>
 </div>
+
+<?php
+
+require_once("includes/initialize.php");
+
+if (isset($_POST['submit'])) {
+
+  global $mydb;
+
+  $name = $_POST['name'];
+  $email = $_POST['email'];
+  $message = $_POST['message'];
+
+  $sql = "INSERT INTO `message_us` (`message_us_id`, `name`, `email`, `message`) VALUES ('', '$name', '$email', '$message')";
+
+  $mydb->setQuery($sql);
+  $mydb->executeQuery();
+
+  message("THANK YOU FOR YOUR FEEDBACKS");
+
+  redirect(WEB_ROOT . "index.php?p=contact");
+};
+?>
