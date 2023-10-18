@@ -1,6 +1,6 @@
 <?php
 require_once("../../includes/initialize.php");
- if (!isset($_SESSION['admin_id'])){
+ if(!isset($_SESSION['admin_id'])){
  	redirect(WEB_ROOT ."admin/login.php");
  }
 $view = (isset($_GET['view']) && $_GET['view'] != '') ? $_GET['view'] : '';
@@ -9,10 +9,7 @@ switch ($view) {
 	case 'list' :
 		$content    = 'list.php';		
 		break;
-	case 'list' :
-		$content    = 'list.php';		
-		break;	
-			
+		
 	default :
 		$content    = 'list.php';		
 }

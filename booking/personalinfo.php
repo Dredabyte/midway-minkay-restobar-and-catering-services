@@ -47,7 +47,7 @@ if (isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
 
 			<div class="col-md-8">
 				<input name="" type="hidden" value="">
-				<input name="name" type="text" class="form-control input-sm" id="name" />
+				<input name="name" type="text" class="form-control input-sm" id="name" required/>
 			</div>
 		</div>
 	</div>
@@ -57,7 +57,7 @@ if (isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
 			<label class="col-md-4 control-label" for="last">LAST NAME:</label>
 
 			<div class="col-md-8">
-				<input name="last" type="text" class="form-control input-sm" id="last" />
+				<input name="last" type="text" class="form-control input-sm" id="last" required/>
 			</div>
 		</div>
 	</div>
@@ -68,7 +68,7 @@ if (isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
 			<label class="col-md-4 control-label" for="last">EMAIL:</label>
 
 			<div class="col-md-8">
-				<input name="email" type="email" class="form-control input-sm" id="email" />
+				<input name="email" type="email" class="form-control input-sm" id="email" required/>
 			</div>
 		</div>
 	</div>
@@ -79,7 +79,7 @@ if (isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
 			<label class="col-md-4 control-label" for="city">CITY:</label>
 
 			<div class="col-md-8">
-				<input name="city" type="text" class="form-control input-sm" id="city" />
+				<input name="city" type="text" class="form-control input-sm" id="city" required/>
 			</div>
 		</div>
 	</div>
@@ -88,7 +88,7 @@ if (isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
 			<label class="col-md-4 control-label" for="address">ADDRESS:</label>
 
 			<div class="col-md-8">
-				<input name="address" type="text" class="form-control input-sm" id="address" />
+				<input name="address" type="text" class="form-control input-sm" id="address" required/>
 			</div>
 		</div>
 	</div>
@@ -98,7 +98,7 @@ if (isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
 			<label class="col-md-4 control-label" for="dbirth">DATE OF BIRTH:</label>
 
 			<div class="col-md-8 input-group">
-				<input type="text" data-date="" data-date-format="yyyy-mm-dd" data-link-field="any" data-link-format="yyyy-mm-dd" name="dbirth" id="dbirth" value="" class="dbirth form-control  input-sm">
+				<input type="text" data-date="" data-date-format="yyyy-mm-dd" data-link-field="any" data-link-format="yyyy-mm-dd" name="dbirth" id="dbirth" value="" class="dbirth form-control  input-sm " required>
 				<span class="input-group-btn">
 					<i class="fa  fa-calendar"></i>
 				</span>
@@ -111,7 +111,7 @@ if (isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
 			<label class="col-md-4 control-label" for="phone">PHONE:</label>
 
 			<div class="col-md-8">
-				<input name="phone" type="text" class="form-control input-sm" id="phone" />
+				<input name="phone" type="text" class="form-control input-sm" id="phone" required/>
 			</div>
 		</div>
 	</div>
@@ -121,7 +121,7 @@ if (isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
 			<label class="col-md-4 control-label" for="nationality">NATIONALITY:</label>
 
 			<div class="col-md-8">
-				<input name="nationality" type="text" class="form-control input-sm" id="nationality" />
+				<input name="nationality" type="text" class="form-control input-sm" id="nationality" required/>
 			</div>
 		</div>
 	</div>
@@ -130,7 +130,7 @@ if (isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
 			<label class="col-md-4 control-label" for="username">USERNAME:</label>
 
 			<div class="col-md-8">
-				<input name="username" type="text" class="form-control input-sm" id="username" />
+				<input name="username" type="text" class="form-control input-sm" id="username" required/>
 			</div>
 		</div>
 	</div>
@@ -139,10 +139,11 @@ if (isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
 			<label class="col-md-4 control-label" for="password">PASSWORD:</label>
 
 			<div class="col-md-8">
-				<input name="pass" type="password" class="form-control input-sm" id="password" />
+				<input name="pass" type="password" class="form-control input-sm" id="password" minlength="8" required/>
 			</div>
 		</div>
 	</div>
+
 
 
 	<div class="form-group">
@@ -150,7 +151,7 @@ if (isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
 			<label class="col-md-4 control-label" for="zip">ZIP CODE:</label>
 
 			<div class="col-md-8">
-				<input name="zip" type="text" class="form-control input-sm" id="zip" />
+				<input name="zip" type="text" class="form-control input-sm" id="zip" required/>
 			</div>
 		</div>
 	</div>
@@ -171,14 +172,14 @@ if (isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
 			</div>
 		</div>
 		<div class="col-md-6">
-		<h5>NOTE:<br>
-		We strongly recommend that your password be a minimum of 8 characters long and should not match your username.<br><br>
+			<h5>NOTE:<br>
+				We strongly recommend that your password be a minimum of 8 characters long and should not match your username.<br><br>
 
-		Please ensure your email address is accurate and valid. We use email for essential communication such as order notifications. Providing a valid email address is crucial for using our services effectively.<br><br>
+				Please ensure your email address is accurate and valid. We use email for essential communication such as order notifications. Providing a valid email address is crucial for using our services effectively.<br><br>
 
-		Rest assured, all your private data is kept confidential. We have a strict policy against selling, exchanging, or marketing your personal information in any way. For more details on the responsibilities of both parties, please refer to our terms and conditions.<br>
-		</h5>
-		</div>	
+				Rest assured, all your private data is kept confidential. We have a strict policy against selling, exchanging, or marketing your personal information in any way. For more details on the responsibilities of both parties, please refer to our terms and conditions.<br>
+			</h5>
+		</div>
 	</div>
 
 </form>

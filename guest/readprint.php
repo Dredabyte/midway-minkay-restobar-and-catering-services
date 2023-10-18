@@ -92,7 +92,7 @@ require_once("../includes/initialize.php");
             <br>
             <br>
             <b>STATUS: </b>
-            <p style="background-color:red;color:white"> <?php echo $res->status; ?></p>
+            <p style="background-color:#029e11;color:white"> <?php echo $res->status; ?></p>
           </div>
           <!-- /.col -->
         </div>

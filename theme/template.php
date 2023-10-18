@@ -25,7 +25,7 @@ if (isset($_POST['avail'])) {
   <link rel="stylesheet" type="text/css" href="<?php echo WEB_ROOT; ?>/css/my_bootstrap.css">
 
   <link rel="stylesheet" type="text/css" href="<?php echo WEB_ROOT; ?>/fonts/css/font-awesome.min.css">
-  
+
 
   <link rel="stylesheet" type="text/css" href="<?php echo WEB_ROOT; ?>/css/custom-navbar.min.css">
 
@@ -131,20 +131,21 @@ if (isset($_SESSION['activity'])) {
     background-color: #40a4a4;
   }
 
-  #availability-wrap .block  > p {
-  color:  #fff; 
-  font-size: 2.5em;  
-  line-height: 1em; 
-  margin-bottom: 0px;
-  margin-top: -30px;
-}
-.modal-content{
-  border-radius: 0;
-  -webkit-box-shadow: 0 2px 3px rgba(0,0,0,0.125);
-  box-shadow: 0 2px 3px rgba(0,0,0,0.125);
-  border: 0;
-  width: fit-content;
-}
+  #availability-wrap .block>p {
+    color: #fff;
+    font-size: 2.5em;
+    line-height: 1em;
+    margin-bottom: 0px;
+    margin-top: -30px;
+  }
+
+  .modal-content {
+    border-radius: 0;
+    -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.125);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.125);
+    border: 0;
+    width: fit-content;
+  }
 </style>
 
 
@@ -227,9 +228,9 @@ if (isset($_SESSION['activity'])) {
  -->
     <div id="footer-wrap" class="site-footer clr">
       <div id="footer" class="clr">
+      <p>&copy; 2023 Miday Minkay Restobar & Catering Services. All Rights Reserved.</p>
         <div id="footer-block-wrap" class="clr">
           <div class="span_1_of_3 col col-1 footer-block ">
-
           </div>
           <div class="span_1_of_3 col col-2 footer-block ">
           </div>
