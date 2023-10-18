@@ -228,17 +228,8 @@ if (isset($_SESSION['activity'])) {
  -->
     <div id="footer-wrap" class="site-footer clr">
       <div id="footer" class="clr">
-      <p>&copy; 2023 Miday Minkay Restobar & Catering Services. All Rights Reserved.</p>
         <div id="footer-block-wrap" class="clr">
-          <div class="span_1_of_3 col col-1 footer-block ">
-          </div>
-          <div class="span_1_of_3 col col-2 footer-block ">
-          </div>
-          <div class="span_1_of_3 col col-3 footer-block ">
-          </div>
-        </div>
-        <div class="span_1_of_1 col col-1">
-        </div>
+        <p>&copy; 2023 Miday Minkay Restobar & Catering Services. All Rights Reserved.</p>
       </div>
     </div>
     <!-- 

@@ -138,20 +138,17 @@ $accomodation = ' | ' . $_GET['q'];
                 <div class="container">
                   <div id="roomimg" class="col-md-12 img-portfolio">
                     <div class="wrapper clearfix">
-                      <a href="#">
-                        <figure class="gallery-item ">
+                      <a href="<?php echo WEB_ROOT . 'admin/mod_room/' . $result->room_image; ?>">
+                        <figure class="gallery-item">
                           <?php if (is_file('admin/mod_room/' . $result->room_image)) : ?>
                             <img class="img-responsive img-hover" src="<?php echo WEB_ROOT . 'admin/mod_room/' . $result->room_image; ?>">
                           <?php else : ?>
                             <img class="img-responsive img-hover" src="<?php echo WEB_ROOT . 'no-img.png'; ?>">
                           <?php endif; ?>
 
-
                           <figcaption class="img-title-active">
                             <h5> &#8369 <?php echo $result->price; ?></h5>
                           </figcaption>
-
-
                         </figure>
                       </a>
                       <ul style="font-size:10px">
