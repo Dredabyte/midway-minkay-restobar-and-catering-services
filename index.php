@@ -44,7 +44,7 @@ switch ($view) {
     $content ='largeimg.php';
     break;
   default :
-      $title="Home";  
+      $title="HOMEE";  
     $content ='home.php';   
 }
 

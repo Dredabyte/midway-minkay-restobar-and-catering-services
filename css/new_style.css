@@ -1,0 +1,98 @@
+/* Apply a background color and font for the entire page */
+html, body {
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Create a container to center content */
+  .container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Header styling for your hotel reservation system */
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  /* Navigation menu styling */
+  nav {
+    background-color: #444;
+  }
+  
+  /* Style your reservation form and its components */
+  .reservation-form {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .reservation-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .reservation-form input[type="text"],
+  .reservation-form input[type="email"],
+  .reservation-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .reservation-form button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  /* Styling for room listings, prices, and availability */
+  .room-listing {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .room-listing h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .room-price {
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .room-availability {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  /* Add more specific styling as needed for your hotel reservation system */
+  
+  /* Footer styling */
+  footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Additional custom styles can be added for various elements as per your design requirements */
+  

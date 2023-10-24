@@ -172,10 +172,10 @@ if (isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
 			</div>
 		</div>
 		<div class="col-md-6">
-			<h5>NOTE:<br>
-				We strongly recommend that your password be a minimum of 8 characters long and should not match your username.<br><br>
+			<h5>NOTE:<br><br>
+				We strongly recommend that your password be a minimum of 8 characters long and should not match your username.<br>
 
-				Please ensure your email address is accurate and valid. We use email for essential communication such as order notifications. Providing a valid email address is crucial for using our services effectively.<br><br>
+				Please ensure your email address is accurate and valid. We use email for essential communication such as order notifications. Providing a valid email address is crucial for using our services effectively.<br>
 
 				Rest assured, all your private data is kept confidential. We have a strict policy against selling, exchanging, or marketing your personal information in any way. For more details on the responsibilities of both parties, please refer to our terms and conditions.<br>
 			</h5>

@@ -21,8 +21,9 @@ if (isset($_POST['avail'])) {
 
   <link rel="stylesheet" type="text/css" href="<?php echo WEB_ROOT; ?>/css/my_style.css">
   <link rel="stylesheet" type="text/css" href="<?php echo WEB_ROOT; ?>/css/responsive.css">
-
   <link rel="stylesheet" type="text/css" href="<?php echo WEB_ROOT; ?>/css/my_bootstrap.css">
+
+  <!-- <link rel="stylesheet" type="text/css" href="<?php echo WEB_ROOT; ?>/css/new_style.css"> -->
 
   <link rel="stylesheet" type="text/css" href="<?php echo WEB_ROOT; ?>/fonts/css/font-awesome.min.css">
 
@@ -35,7 +36,7 @@ if (isset($_POST['avail'])) {
   <link href="<?php echo WEB_ROOT; ?>css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
   <link href="<?php echo WEB_ROOT; ?>css/datepicker.css" rel="stylesheet" media="screen">
 
-  <link href="<?php echo WEB_ROOT; ?>css/my_galery.css" rel="stylesheet" media="screen">
+  <link href="<?php echo WEB_ROOT; ?>css/my_gallery.css" rel="stylesheet" media="screen">
   <link href="<?php echo WEB_ROOT; ?>css/ekko-lightbox.css" rel="stylesheet">
 
   <link rel="icon" type="image/png" href="<?php echo WEB_ROOT; ?>favicon_midway-modified.png">
@@ -71,7 +72,7 @@ if (isset($_SESSION['activity'])) {
 <style type="text/css">
   body {
     font-family: 'Poppins', sans-serif;
-    background-color: lightcyan;
+    background-color: white;
   }
 
   h1,

@@ -52,9 +52,8 @@
   } else {
     $query = "SELECT * FROM `room` r ,`accomodation` a WHERE r.`accomodation_id`=a.`accomodation_id`";
   }
-
   $accomodation = ' | ' . @$_GET['q'];
-  ?>
+?>
 
 
 

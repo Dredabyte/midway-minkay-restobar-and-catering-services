@@ -16,6 +16,7 @@
               <i class="fa fa-shopping-cart" style="font-size:35px;"><?php echo  isset($cart) ? $cart : ''; ?> </i>
             </a>
           </li>
+          
           <!--  <li>
             <a data-toggle="tooltip" data-placement="bottom" title="Log In" href="<?php echo WEB_ROOT; ?>booking/index.php?view=logininfo">
             <i class="fa fa-user" style="font-size:35px;"></i>
